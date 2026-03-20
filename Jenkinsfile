@@ -4,21 +4,12 @@ pipeline {
             image 'maven:3.9.9-eclipse-temurin-21'
         }
     }
-
+    
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean compile'
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Build SUCCESS'
-        }
-        failure {
-            echo 'Build FAILED'
         }
     }
 }
