@@ -4,8 +4,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building project...'
+                bat 'mvn clean package'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build SUCCESS'
+        }
+        failure {
+            echo 'Build FAILED'
         }
     }
 }
